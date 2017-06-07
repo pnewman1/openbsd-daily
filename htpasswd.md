@@ -16,23 +16,32 @@
 - Line 48 Starts the main function
 - Line 50 creates a character array called salt with a size of password len and creates a tmpl character array the size of the string "/tmp/htpasswd-XXXXXXXXXX"
 
-- Line 51 creates a character array called hash with the size of password len and pass set to 1024 and pass2 set to 1024
+- Line 51 : 58 variable declerations
+- Line 60 : uses pledge to force in a restricted mode or errors on bad path 
+- Line 63 : parses any options and will display usage if anything other than I is used
+    - If I is used set htpasswd to use batch mode
 
-- Lines 52 sets up a few string variables
-- Line 53 sets up a few int variables
+- Line 75 reduces the number of args by the next index
+- Line 76 updates argv with the index of the next 
 
-- Line 54 sets up a in file and out file to hold the input file location and the output file location
-
-- Line 55 creates a variable string called file
+- Line 78 - starts the batch section 
+- Line 79 checks that there is only one argument left and if so set file variable to that argument value
+- Line 80 displays the usage and usage exits with a value of 1
+- Line 83 Still trying to understand pledge from the man page.
 
 ## After Main
 function nag 
 - takes a string variable with the name of line
 - breaks string 1st param with a delemiter 2nd arg
-- if tok doesn't contain $2a$ or $2b$ then update nagcount and if nagcount then complain to user 5 times then stop complaining to them to not use bcrypt
+- if tok doesn't contain $2a$ or $2b$ 
+    - update nagcount 
+    - If MAXNAG Count not reached complain to user to upgrade file
 
 ## Side quests 
-strtok - breaks strings into sequence of >= 0 non empty tokens. First call is string to be parsed. Subsquent calls must be NULL. Each call returns a pointer to a null-terminated string. Returns NULL 
+- strtok - breaks strings into sequence of >= 0 non empty tokens. First call is string to be parsed. Subsquent calls must be NULL. Each call returns a pointer to a null-terminated string. Returns NULL 
 when all tokens have been found
 
-strncmp - compares the first n bytes between two strings. str1 is the first string, str2 is the second string, n is the max number of characters. <0 if s1 less than s2, > 0 if s1 is greater than s2 and 0 if they are equal
+- strncmp - compares the first n bytes between two strings. str1 is the first string, str2 is the second string, n is the max number of characters. <0 if s1 less than s2, > 0 if s1 is greater than s2 and 0 if they are equal
+
+- wrote argtest while learning about optind. Found info from [http://man.openbsd.org/man3/getopt.3](http://man.openbsd.org/man3/getopt.3)
+    - requires the unistd.h library
