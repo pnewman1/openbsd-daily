@@ -34,7 +34,7 @@
 
 - Line 90-91 attempts to search for ":" in haystack and error out if can't find colon
 
-- Line 92 set null  byte to tok's next index
+- Line 92 set tok's next index to null byte
 
 - Line 94 prints input string into login and gets the loginlen
 
