@@ -29,6 +29,17 @@
 - Line 80 displays the usage and usage exits with a value of 1
 - Line 83 Still trying to understand pledge from the man page.
 
+- Line 86 Attempts to get the lenght of the line (If can't read line error) and read input into line
+- Line 87 adds null terminator to end of line
+
+- Line 90-91 attempts to search for ":" in haystack and error out if can't find colon
+
+- Line 92 set null  byte to tok's next index
+
+- Line 94 prints input string into login and gets the loginlen
+
+- Line 97 writes tok into pass variable and checks that the size is not greater than 1024 bytes
+
 ## After Main
 function nag 
 - takes a string variable with the name of line
