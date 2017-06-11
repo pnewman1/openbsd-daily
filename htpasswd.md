@@ -18,8 +18,7 @@
 
 - Line 51 : 58 variable declerations
 - Line 60 : uses pledge to force in a restricted mode or errors on bad path 
-- Line 63 : parses any options and will display usage if anything other than I is used
-    - If I is used set htpasswd to use batch mode
+- Line 63 : Parses options, check that if options are given it should only be -I  
 
 - Line 75 reduces the number of args by the next index
 - Line 76 updates argv with the index of the next 
@@ -29,16 +28,20 @@
 - Line 80 displays the usage and usage exits with a value of 1
 - Line 83 Still trying to understand pledge from the man page.
 
-- Line 86 Attempts to get the lenght of the line (If can't read line error) and read input into line
+- Line 86 Attempts to get the lengtht of the line (If can't read line error) and read input into line
 - Line 87 adds null terminator to end of line
 
 - Line 90-91 attempts to search for ":" in haystack and error out if can't find colon
 
-- Line 92 set tok's next index to null byte
+- Line 92 Inserts \0 null byte between login and password then sets tok to password 
 
-- Line 94 prints input string into login and gets the loginlen
+- Line 94 sets login
 
 - Line 97 writes tok into pass variable and checks that the size is not greater than 1024 bytes
+
+- Line 99 Starts if not in batch mode
+
+- 
 
 ## After Main
 function nag 
